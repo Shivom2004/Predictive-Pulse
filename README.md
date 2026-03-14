@@ -13,6 +13,7 @@ Assist in early detection of hypertension.
 Provide a simple web interface for user input and prediction results.
 
 Technologies Used
+
 Python
 
 Flask
