@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Pulse | ML Blood Pressure Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Load FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <h1><i class="fa-solid fa-heart-pulse"></i> Predictive Pulse</h1>
+            <p>Advanced Machine Learning Hypertension Analysis</p>
+        </header>
+
+        <section class="glass-panel main-panel">
+            <form id="healthForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="18" max="120" required placeholder="e.g. 45">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bmi">BMI</label>
+                        <input type="number" id="bmi" name="bmi" step="0.1" required placeholder="e.g. 24.5">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="heart_rate">Heart Rate (bpm)</label>
+                        <input type="number" id="heart_rate" name="heart_rate" required placeholder="e.g. 72">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cholesterol">Total Cholesterol (mg/dL)</label>
+                        <input type="number" id="cholesterol" name="cholesterol" required placeholder="e.g. 195">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="exercise">Exercise (Hrs/Week)</label>
+                        <input type="number" id="exercise" name="exercise" step="0.1" required placeholder="e.g. 3.5">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="smoking">Smoking Status</label>
+                        <select id="smoking" name="smoking" required>
+                            <option value="" disabled selected>Select Status</option>
+                            <option value="Never">Never</option>
+                            <option value="Former">Former</option>
+                            <option value="Current">Current</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="family_history">Family History</label>
+                        <select id="family_history" name="family_history" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="submit-wrapper">
+                    <button type="submit" id="submitBtn" class="btn-primary">
+                        <span class="btn-text">Analyze Pulse</span>
+                        <div class="spinner hidden" id="spinner"></div>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Results section (Hidden initially) -->
+        <section id="resultsSection" class="glass-panel results-panel hidden">
+            <h2>Analysis Complete</h2>
+            <div class="result-card">
+                <div class="prediction-badge" id="predictionBadge">Normal</div>
+                <div class="recommendation-content" id="recommendationContent">
+                    Your reading is normal.
+                </div>
+            </div>
+            <button id="resetBtn" class="btn-secondary">New Analysis</button>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
